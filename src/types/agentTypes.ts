@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+export type ACTION = "reason" | "search" | "image";
+
 /* Message & Task Type */
 export const [
   MESSAGE_TYPE_GOAL,

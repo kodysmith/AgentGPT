@@ -10,6 +10,7 @@ import { env } from "../env/client.mjs";
 import { LLMChain } from "langchain/chains";
 import { extractTasks } from "../utils/helpers";
 import { Serper } from "./custom-tools/serper";
+import { GoogleSearch } from "./custom-tools/basic-search";
 
 async function startGoalAgent(
   modelSettings: ModelSettings,
@@ -73,7 +74,7 @@ async function executeTaskAgent(
   console.log("Execution analysis:", analysis);
 
   if (analysis.action == "search" && process.env.SERP_API_KEY) {
-    return await new Serper(modelSettings, goal)._call(analysis.arg);
+    return await new GoogleSearch(modelSettings, goal)._call(analysis.arg);
   }
 
   const completion = await new LLMChain({
