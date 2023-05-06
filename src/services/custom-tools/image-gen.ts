@@ -1,0 +1,1 @@
+// an interface to call an image creation api 
